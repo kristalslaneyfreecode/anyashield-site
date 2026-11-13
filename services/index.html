@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Website Security for Small Firms — AnyaShield</title>
+<meta name="description" content="Website security reviews and website builds for small law firms, accounting practices and insurance agencies in the Austin area. Fixed prices, written in plain English.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#15211c; --muted:#5b6862; --line:rgba(58,54,176,.14);
+  --indigo:#3a36b0; --indigo-soft:rgba(58,54,176,.06);
+  --paper:#f7f8fb; --card:#fff;
+  --ok:#1d7a47; --bad:#bf1e3a;
+  --font:'Bricolage Grotesque',system-ui,-apple-system,Segoe UI,sans-serif;
+}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{margin:0;font-family:var(--font);color:var(--ink);background:var(--paper);line-height:1.6;font-size:17px;}
+.wrap{max-width:860px;margin:0 auto;padding:0 20px;}
+a{color:var(--indigo);}
+h1,h2,h3{line-height:1.15;letter-spacing:-.02em;margin:0;}
+h1{font-size:clamp(2rem,5.5vw,3rem);font-weight:800;}
+h2{font-size:clamp(1.35rem,3.5vw,1.8rem);font-weight:700;margin-bottom:.6rem;}
+p{margin:.9rem 0;}
+
+header{border-bottom:1px solid var(--line);background:#fff;}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.05rem;letter-spacing:-.01em;text-decoration:none;color:var(--ink);}
+.brand .mark{width:30px;height:30px;border-radius:8px;background:var(--indigo);display:grid;place-items:center;flex:none;}
+.brand .mark svg{width:17px;height:17px;}
+.brand .nm span{color:var(--indigo);}
+.bar a.back{font-size:.84rem;color:var(--muted);text-decoration:none;}
+.bar a.back:hover{color:var(--indigo);}
+
+.hero{padding:56px 0 44px;}
+.eyebrow{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--indigo);font-weight:700;}
+.lede{font-size:1.1rem;color:var(--muted);max-width:620px;}
+.who{margin-top:22px;padding:14px 16px;border-left:3px solid var(--indigo);background:var(--indigo-soft);border-radius:0 10px 10px 0;font-size:.95rem;}
+
+section{padding:40px 0;border-top:1px solid var(--line);}
+.checks{list-style:none;padding:0;margin:1.2rem 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 24px;}
+.checks li{position:relative;padding-left:26px;font-size:.95rem;}
+.checks li:before{content:"";position:absolute;left:0;top:.52em;width:12px;height:7px;border-left:2.5px solid var(--indigo);border-bottom:2.5px solid var(--indigo);transform:rotate(-45deg);}
+.checks b{font-weight:700;}
+@media(max-width:620px){.checks{grid-template-columns:minmax(0,1fr);}}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:1.4rem;}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;}
+.card.pick{border-color:rgba(58,54,176,.45);box-shadow:0 8px 26px rgba(58,54,176,.08);}
+.card .tag{font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--indigo);font-weight:700;}
+.card h3{font-size:1.05rem;margin-top:6px;}
+.price{font-size:1.9rem;font-weight:800;margin:.4rem 0 .1rem;letter-spacing:-.03em;}
+.price small{font-size:.8rem;font-weight:400;color:var(--muted);letter-spacing:0;}
+.when{font-size:.8rem;color:var(--muted);}
+.card ul{list-style:none;padding:0;margin:14px 0 0;}
+.card li{font-size:.9rem;color:var(--muted);padding-left:16px;position:relative;margin-bottom:7px;}
+.card li:before{content:"";position:absolute;left:0;top:.55em;width:6px;height:6px;border-radius:50%;background:var(--indigo);opacity:.45;}
+
+.steps{counter-reset:s;list-style:none;padding:0;margin:1.2rem 0 0;}
+.steps li{counter-increment:s;position:relative;padding-left:44px;margin-bottom:18px;}
+.steps li:before{content:counter(s);position:absolute;left:0;top:-2px;width:30px;height:30px;border-radius:50%;background:var(--indigo);color:#fff;display:grid;place-items:center;font-weight:700;font-size:.85rem;}
+.steps b{display:block;}
+
+.note{font-size:.9rem;color:var(--muted);background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;}
+
+form{margin-top:1.2rem;display:grid;gap:12px;max-width:520px;}
+label{font-size:.85rem;font-weight:600;}
+input,textarea{font-family:inherit;font-size:1rem;padding:11px 13px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);width:100%;}
+input:focus,textarea:focus{outline:2px solid rgba(58,54,176,.35);outline-offset:1px;border-color:var(--indigo);}
+textarea{min-height:110px;resize:vertical;}
+button{font-family:inherit;font-size:1rem;font-weight:700;padding:13px 22px;border:none;border-radius:10px;background:var(--indigo);color:#fff;cursor:pointer;justify-self:start;}
+button:disabled{opacity:.6;cursor:wait;}
+.msg{font-size:.9rem;margin:0;}
+.msg.ok{color:var(--ok);}
+.msg.bad{color:var(--bad);}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;}
+
+footer{border-top:1px solid var(--line);padding:26px 0 40px;font-size:.84rem;color:var(--muted);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="/">
+      <span class="mark"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 1.5L18 5.5V10C18 14.5 14.5 18.5 10 20C5.5 18.5 2 14.5 2 10V5.5L10 1.5Z" fill="white" fill-opacity="0.16" stroke="white" stroke-width="1.2"/><path d="M7 10l2.5 2.5 4-5" stroke="white" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <span class="nm">Anya<span>Shield</span></span>
+    </a>
+    <a class="back" href="/">Our security products &rarr;</a>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="eyebrow">Services</div>
+    <h1>Website security for small firms.</h1>
+    <p class="lede">I review and rebuild websites for small professional practices around Austin — the ones holding client money, client records, or both. Fixed prices, written in plain English, no jargon and no retainer.</p>
+    <div class="who"><b>Built for:</b> law firms, accountants and bookkeepers, title companies, insurance agencies, medical and dental practices, property managers &mdash; anywhere from one person to about twenty, with no IT department.</div>
+  </div>
+
+  <section>
+    <h2>What I check</h2>
+    <p style="color:var(--muted);margin-top:0;">All of it from outside, the way any visitor sees your site. Nothing is probed, scanned or accessed.</p>
+    <ul class="checks">
+      <li><b>Encryption.</b> Whether your site is secure, and whether it stays that way.</li>
+      <li><b>Email spoofing.</b> Whether a stranger can send email that looks like it came from you.</li>
+      <li><b>Your contact form.</b> Whether messages actually arrive. They often don't.</li>
+      <li><b>Exposure.</b> Admin pages, file listings and leftovers visible from outside.</li>
+      <li><b>Software age.</b> What your site runs on and how far behind it is.</li>
+      <li><b>Phones.</b> Whether half your visitors can read it.</li>
+      <li><b>Speed.</b> How long people wait before anything appears.</li>
+      <li><b>Privacy.</b> Whether you collect personal details without a policy.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Prices</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="tag">Start here</div>
+        <h3>Security Check</h3>
+        <div class="price">$350</div>
+        <div class="when">Written report in 3 business days</div>
+        <ul>
+          <li>Two pages, plain English</li>
+          <li>What's exposed and how serious</li>
+          <li>What to fix first, and the cost</li>
+          <li>No obligation to hire me after</li>
+        </ul>
+      </div>
+      <div class="card pick">
+        <div class="tag">Most firms choose this</div>
+        <h3>Site Rebuild</h3>
+        <div class="price">$2,400</div>
+        <div class="when">Half up front, half on delivery</div>
+        <ul>
+          <li>Up to five pages, built for phones first</li>
+          <li>Encrypted, hardened, spam-resistant</li>
+          <li>A contact form that reaches your phone</li>
+          <li>Search basics so clients find you</li>
+          <li>Live in about a week</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="tag">Keep it maintained</div>
+        <h3>Rebuild + Care</h3>
+        <div class="price">$2,400 <small>+ $150/mo</small></div>
+        <div class="when">Cancel any time</div>
+        <ul>
+          <li>Everything in the rebuild</li>
+          <li>Monthly updates and patches</li>
+          <li>Uptime monitoring &mdash; you hear it from me first</li>
+          <li>Content edits whenever you need them</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:.9rem;color:var(--muted);">Not sure? Start with the check. It's the cheapest way to find out whether anything is actually wrong &mdash; and much of what it finds, you can fix yourself.</p>
+  </section>
+
+  <section>
+    <h2>How it works</h2>
+    <ol class="steps">
+      <li><b>You send me your website address.</b> That's all I need to start. No access, no passwords, nothing installed.</li>
+      <li><b>I check it and write it up.</b> Two pages within three business days: what I found, how serious each thing is, and what to do about it in order.</li>
+      <li><b>You decide what happens next.</b> Fix it yourself, hand the report to whoever manages your site, or have me do the work. Plenty of people take the report and stop there, and that's a perfectly good outcome.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Who you're dealing with</h2>
+    <p>I'm Kristal Slaney. I build security software &mdash; three patent-pending systems for bot detection, traffic deflection and real-time file authorization, which you can read about on <a href="/">the main site</a>. This page is the practical side of that work: the same attention, applied to the website your clients actually see.</p>
+    <p class="note"><b>What this is not:</b> a penetration test. I look at what's publicly visible and at your public DNS records. I don't probe your systems, test logins, or touch anything belonging to your clients &mdash; none of that is appropriate without written permission. If you need that kind of review, it's a different engagement and I'll say so.</p>
+  </section>
+
+  <section id="contact">
+    <h2>Get a security check</h2>
+    <p style="color:var(--muted);margin-top:0;">Send your website address and I'll come back to you within one business day.</p>
+    <form id="f" novalidate>
+      <div>
+        <label for="n">Your name</label>
+        <input id="n" name="name" type="text" autocomplete="name" required>
+      </div>
+      <div>
+        <label for="e">Email</label>
+        <input id="e" name="email" type="email" autocomplete="email" required>
+      </div>
+      <div>
+        <label for="w">Your website</label>
+        <input id="w" name="website" type="text" placeholder="yourfirm.com" required>
+      </div>
+      <div>
+        <label for="m">Anything else (optional)</label>
+        <textarea id="m" name="message"></textarea>
+      </div>
+      <input class="hp" id="hp" name="company_url" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button id="b" type="submit">Request a security check</button>
+      <p class="msg" id="msg"></p>
+    </form>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    &copy; 2026 AnyaShield &middot; Cedar Park, Texas &middot;
+    <a href="mailto:contact@anyashield.com">contact@anyashield.com</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var SERVER='https://anyashield-server.onrender.com';
+  var f=document.getElementById('f'), btn=document.getElementById('b'), msg=document.getElementById('msg');
+  function say(t,cls){ msg.textContent=t; msg.className='msg'+(cls?' '+cls:''); }
+  f.addEventListener('submit',function(ev){
+    ev.preventDefault();
+    var name=document.getElementById('n').value.trim(),
+        email=document.getElementById('e').value.trim(),
+        site=document.getElementById('w').value.trim(),
+        extra=document.getElementById('m').value.trim(),
+        hp=document.getElementById('hp').value;
+    if(!name||!email.match(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)||!site){
+      say('Please add your name, a valid email, and your website address.','bad'); return;
+    }
+    btn.disabled=true; btn.textContent='Sending…';
+    say('Sending — this can take up to a minute the first time.');
+    var ctl = (typeof AbortController!=='undefined') ? new AbortController() : null;
+    var tm = setTimeout(function(){ if(ctl) ctl.abort(); }, 65000);
+    fetch(SERVER+'/api/contact',{
+      method:'POST', headers:{'Content-Type':'application/json'},
+      signal: ctl?ctl.signal:undefined,
+      body: JSON.stringify({
+        kind:'contact', name:name, email:email, hp:hp,
+        message:'[Security check request] Website: '+site+(extra?'\n\n'+extra:'')
+      })
+    })
+    .then(function(r){ return r.json().catch(function(){ return {ok:r.ok}; }); })
+    .then(function(j){
+      clearTimeout(tm);
+      if(!j||!j.ok) throw new Error((j&&j.error)||'not sent');
+      f.reset();
+      btn.style.display='none';
+      say('Got it — thank you. I’ll come back to you within one business day.','ok');
+    })
+    .catch(function(){
+      clearTimeout(tm);
+      btn.disabled=false; btn.textContent='Request a security check';
+      msg.className='msg bad';
+      msg.innerHTML='That didn’t send. Please email <a href="mailto:contact@anyashield.com">contact@anyashield.com</a> and I’ll pick it up there.';
+    });
+  });
+})();
+</script>
+</body>
+</html>
