@@ -3786,6 +3786,7 @@ function botStep(){
 }
 /* the same flow rule the server uses: a hand makes a dense, continuous stream of moves; agents jump between spots */
 function asFlow(P,nd,res){ if(!P||P.length<2)return; var jump=0,cont=0,gaps=0,i,soft=0,why=[]; for(i=1;i<P.length;i++){var dt=P[i][2]-P[i-1][2],ds=Math.hypot(P[i][0]-P[i-1][0],P[i][1]-P[i-1][1]); if(dt>100){jump+=ds;if(ds>40)gaps++;}else cont+=ds;} if(gaps>=2||(jump>60&&jump>0.2*(jump+cont))){soft+=4;why.push('jumpy');} var n=0,cur=[P[0]],ks=[]; for(i=1;i<P.length;i++){ if(P[i][2]-P[i-1][2]>150){ if(cur.length>1)ks.push(cur); cur=[]; } cur.push(P[i]); } if(cur.length>1)ks.push(cur); ks.forEach(function(k){var L=Math.hypot(k[k.length-1][0]-k[0][0],k[k.length-1][1]-k[0][1]); if(L>=60&&k.length>=8)n++;}); if(n<nd){soft+=3;why.push('noStroke');} if(soft){res.human=false; res.why=res.why||[]; why.forEach(function(w){if(res.why.indexOf(w)<0)res.why.push(w);});} }
+try{window.asFlow=asFlow;}catch(_e){}
 function labFinish(reason){
   var r=botRun;if(!r||r.done)return;
   r.done=true;
@@ -3904,6 +3905,8 @@ var ASV=(function(){
 
 /* Decides what happens after the dots: the server (if present) has the final say. */
 function afterChecks(res,extra){
+  /* same rules as the server, so they also apply if the server can't be reached */
+  try{ var pk=KV.p(extra); if(pk&&pk.mode==='kbd'){ res.human=false; } else if(pk&&window.asFlow){ window.asFlow(pk.S||[], (typeof DOTS!=='undefined'&&DOTS.length)||3, res); } }catch(_e){}
   if(!res.human){
     if(ASV.on)ASV.verify(extra).catch(function(){});   /* still log it on the dashboard */
     kFail();return;
