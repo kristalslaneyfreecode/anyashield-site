@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="AnyaShield — Real-time cybersecurity with three patent-pending technologies: Kinetic CAPTCHA with continuous Presence monitoring, Cloud Deflection Shield, and Real-Time File Authorization.">
+<meta name="description" content="AnyaShield — Real-time cybersecurity with three patent-pending technologies: Random Kinetic CAPTCHA with continuous Presence monitoring, Cloud Deflection Shield, and Real-Time File Authorization.">
 <meta property="og:title" content="AnyaShield — Real-Time Cybersecurity">
 <meta property="og:description" content="Three patent-pending security technologies, founded by Kristal Joy Slaney.">
 <meta property="og:type" content="website">
@@ -1483,6 +1483,19 @@ section,.stats-strip{scroll-margin-top:72px;}
   .mobile-menu a,.mobile-menu button{min-height:48px;}
 }
 </style>
+<style id="as-polish">
+/* polish: crisper buttons, smoother taps, mobile comfort (keeps the AnyaShield blue design) */
+button,a,[onclick]{-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
+.btn-primary,.nav-btn{box-shadow:0 8px 22px -10px rgba(11,95,255,.6);transition:transform .2s cubic-bezier(.2,.8,.2,1),box-shadow .2s,background .2s;}
+.btn-primary:hover,.nav-btn:hover{box-shadow:0 14px 30px -10px rgba(11,95,255,.75);}
+.btn-demo:hover,.btn-ghost:hover{box-shadow:0 10px 26px -14px rgba(11,95,255,.6);}
+h1 em{background:linear-gradient(90deg,#0B5FFF 0%,#0B5FFF 35%,#5FA2FF 50%,#0B5FFF 65%,#0B5FFF 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:asShine 7s ease-in-out infinite;}
+@keyframes asShine{0%{background-position:100% 0}60%,100%{background-position:-150% 0}}
+#as-progress{position:fixed;top:0;left:0;right:0;height:3px;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,#0B5FFF,#5FA2FF);z-index:10000;pointer-events:none;}
+.bench-row{min-width:0;max-width:100%;overflow-wrap:anywhere;}
+@media(max-width:768px){footer a{display:inline-block;padding:11px 8px;min-height:44px;line-height:22px;}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important;}}
+</style>
 </head>
 <body>
 <!-- Netlify Forms: these hidden forms let Netlify collect contact messages and waitlist sign-ups (see Forms in the Netlify dashboard) -->
@@ -1577,7 +1590,7 @@ section,.stats-strip{scroll-margin-top:72px;}
 <!-- STATS -->
 <div class="stats-strip">
   <div class="stats-inner">
-    <div class="reveal"><div class="stat-val"><span>7</span>/7</div><div class="stat-lbl">Simulated AI attackers stopped in our live demo — try them yourself</div></div>
+    <div class="reveal"><div class="stat-val"><span>8</span>/8</div><div class="stat-lbl">Simulated AI attackers stopped in our live demo — try them yourself</div></div>
     <div class="reveal"><div class="stat-val"><span>0</span> of 2,000</div><div class="stat-lbl">Simulated human runs wrongly blocked in our lab tests</div></div>
     <div class="reveal"><div class="stat-val"><span>207</span></div><div class="stat-lbl">Days avg breach goes undetected — industry</div></div>
     <div class="reveal"><div class="stat-val"><span>3</span></div><div class="stat-lbl">Patents pending — one for each gap we close</div></div>
@@ -1617,7 +1630,7 @@ section,.stats-strip{scroll-margin-top:72px;}
       <div class="product-card">
         <div class="p-num">PRODUCT 01 <span class="p-stage live">Working — try it in the demo</span></div>
         <div class="p-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12.5l2.5 2.5L16 9"/></svg></div>
-        <div class="p-name">Kinetic CAPTCHA</div>
+        <div class="p-name">Random Kinetic CAPTCHA</div>
         <div class="p-code">KC-1 Platform + Presence</div>
         <p class="p-desc">At login, the verification target moves to a random screen position. How long you must hold is chosen by the server and never sent to the page: the page only learns a hold is over when the server says so. A script can’t read the answer in advance, so bots stand out while people pass.</p>
         <p class="p-desc" style="margin-top:0.75rem;font-size:0.82rem;color:var(--muted);border-top:1px solid var(--border);padding-top:0.75rem;"><strong style="color:var(--cyan);font-family:'Outfit',system-ui,sans-serif;font-size:0.72rem;">+ PRESENCE LAYER</strong> — After login, a silent behavioral agent monitors mouse entropy, typing cadence, and scroll patterns to build a live human-presence score. When the score drops — session hijacking, bot handoff, credential takeover — Anya triggers a kinetic re-challenge automatically. Zero interruption for real humans. Automated takeover fails instantly.</p>
@@ -1628,7 +1641,7 @@ section,.stats-strip{scroll-margin-top:72px;}
         <div class="p-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3.5V12c0 5-3.6 8.6-8 10-4.4-1.4-8-5-8-10V6.5L12 3Z"/><path d="M12 8v5"/></svg></div>
         <div class="p-name">Cloud Deflection Shield</div>
         <div class="p-code">ICDS Platform</div>
-        <p class="p-desc">Attack traffic is automatically routed to a sacrificial cloud layer that absorbs and resets — your physical server never sees a single malicious packet. Visitors who passed the Kinetic check keep their place in line; known repeat attackers are refused on arrival.</p>
+        <p class="p-desc">Attack traffic is automatically routed to a sacrificial cloud layer that absorbs and resets — your physical server never sees a single malicious packet. Visitors who passed the Random Kinetic CAPTCHA keep their place in line; known repeat attackers are refused on arrival.</p>
         <div class="p-tags"><span class="p-tag">DDoS Protection</span><span class="p-tag">AI Defense</span></div>
       </div>
       <div class="product-card">
@@ -1687,7 +1700,7 @@ section,.stats-strip{scroll-margin-top:72px;}
       </div>
       <div class="demo-preview-body">
         <div class="demo-tab-row">
-          <div class="demo-tab active">&#128306; Kinetic CAPTCHA</div>
+          <div class="demo-tab active">&#128306; Random Kinetic CAPTCHA</div>
           <div class="demo-tab">&#128737; Cloud Shield</div>
           <div class="demo-tab">&#128272; File Auth</div>
           <div class="demo-tab">&#10022; Ask Anya</div>
@@ -1702,9 +1715,9 @@ section,.stats-strip{scroll-margin-top:72px;}
     <div class="demo-text reveal">
       <div class="tag">Interactive Demo</div>
       <h3>See AnyaShield in action</h3>
-      <p>Try all three products live in your browser — no signup, no install. See exactly how Kinetic CAPTCHA stops bots, watch a DDoS attack get deflected in real time, and approve or deny live file access requests.</p>
+      <p>Try all three products live in your browser — no signup, no install. See exactly how Random Kinetic CAPTCHA stops bots, watch a DDoS attack get deflected in real time, and approve or deny live file access requests.</p>
       <div class="demo-features">
-        <div class="demo-feature"><div class="demo-feature-dot"></div>Kinetic CAPTCHA — try to beat it yourself</div>
+        <div class="demo-feature"><div class="demo-feature-dot"></div>Random Kinetic CAPTCHA — try to beat it yourself</div>
         <div class="demo-feature"><div class="demo-feature-dot"></div>Presence Layer — watch your live trust score in real time</div>
         <div class="demo-feature"><div class="demo-feature-dot"></div>Cloud Deflection Shield — watch attacks get absorbed live</div>
         <div class="demo-feature"><div class="demo-feature-dot"></div>File Authorization — approve and deny real-time requests</div>
@@ -1874,8 +1887,8 @@ section,.stats-strip{scroll-margin-top:72px;}
           <div style="font-family:'Outfit',system-ui,sans-serif;font-size:0.7rem;color:var(--cyan);margin-bottom:1rem;letter-spacing:0.08em;">HOW IT COMPARES</div>
           <div style="font-size:1.1rem;font-weight:700;margin-bottom:1.2rem;">What’s already on the market, and what we do differently</div>
           <div class="cmp">
-            <div class="cmp-row"><b>Kinetic CAPTCHA</b><div><small>Closest today</small><p>Puzzle and drag CAPTCHAs (GeeTest, Arkose Labs); invisible scoring (reCAPTCHA v3, hCaptcha, Turnstile)</p></div><div><small>What’s different</small><p>They score behaviour too. The difference: our server picks where the target is <i>and</i> how long to hold, never tells the page the hold time, then keeps checking presence after you pass.</p></div></div>
-            <div class="cmp-row"><b>Cloud Deflection Shield</b><div><small>Closest today</small><p>Edge networks (Cloudflare, Akamai, AWS Shield); moving-target-defence research</p></div><div><small>What’s different</small><p>They absorb far bigger floods than we can today. The difference: people who passed the Kinetic check keep their place in line while unverified traffic is turned away first.</p></div></div>
+            <div class="cmp-row"><b>Random Kinetic CAPTCHA</b><div><small>Closest today</small><p>Puzzle and drag CAPTCHAs (GeeTest, Arkose Labs); invisible scoring (reCAPTCHA v3, hCaptcha, Turnstile)</p></div><div><small>What’s different</small><p>They score behaviour too. The difference: our server picks where the target is <i>and</i> how long to hold, never tells the page the hold time, then keeps checking presence after you pass.</p></div></div>
+            <div class="cmp-row"><b>Cloud Deflection Shield</b><div><small>Closest today</small><p>Edge networks (Cloudflare, Akamai, AWS Shield); moving-target-defence research</p></div><div><small>What’s different</small><p>They absorb far bigger floods than we can today. The difference: people who passed the Random Kinetic CAPTCHA keep their place in line while unverified traffic is turned away first.</p></div></div>
             <div class="cmp-row"><b>File Authorization</b><div><small>Closest today</small><p>Rights management (Microsoft Purview, Seclore, Fasoo); push approval for logins (Duo, Okta)</p></div><div><small>What’s different</small><p>They grant standing permission you can revoke later. The difference: every open asks the owner live, and the key works once for 60 seconds.</p></div></div>
             <p class="cmp-note">We name these so you can check for yourself. Each of the three on its own has neighbours; connecting them through one human check is the part we haven’t found elsewhere.</p>
           </div>
@@ -1961,7 +1974,7 @@ section,.stats-strip{scroll-margin-top:72px;}
         <h3>Partnerships, Licensing & Investment</h3>
         <p>This technology isn't for everyone. It's for the organizations that can't afford to be breached. If that's you — book 30 minutes. Kristal will walk you through exactly how AnyaShield protects your specific infrastructure.</p>
         <div class="contact-detail"><span>&#128231;</span><strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="fe9d91908a9f9d8abe9f90879f8d96979b929ad09d9193">[email&#160;protected]</a></strong></div>
-        <div class="contact-detail"><span>&#128205;</span><strong>Cedar Park, Texas, United States</strong></div>
+        <div class="contact-detail"><span>&#128205;</span><strong>Austin, Texas, United States</strong></div>
         <div class="contact-detail"><span>&#128336;</span><strong>Response within 48 hours</strong></div>
         <div class="warn-bar"><p>Full technical details are shared under NDA only. No verbal agreements.</p></div>
       </div>
@@ -1985,7 +1998,7 @@ section,.stats-strip{scroll-margin-top:72px;}
   <div style="max-width:640px;margin:0 auto;text-align:center;">
     <div class="tag reveal" style="justify-content:center;">Early Access</div>
     <h2 class="reveal" style="margin-bottom:1rem;">Join the AnyaShield<br><em>Launch Waitlist</em></h2>
-    <p class="reveal" style="color:var(--muted);font-size:1rem;line-height:1.75;margin-bottom:2.5rem;font-weight:300;">Be among the first to deploy Kinetic CAPTCHA, Cloud Deflection Shield, and Real-Time File Authorization. Early access members get priority onboarding and founding-partner pricing.</p>
+    <p class="reveal" style="color:var(--muted);font-size:1rem;line-height:1.75;margin-bottom:2.5rem;font-weight:300;">Be among the first to deploy Random Kinetic CAPTCHA, Cloud Deflection Shield, and Real-Time File Authorization. Early access members get priority onboarding and founding-partner pricing.</p>
     <div class="reveal waitlist-card" style="background:var(--ink2);border:1px solid var(--border);border-radius:16px;padding:2.5rem;">
       <div class="waitlist-form" style="display:flex;gap:0;max-width:480px;margin:0 auto 1rem;flex-wrap:nowrap;">
         <input type="email" id="waitlist-email" placeholder="Enter your work email" style="flex:1;background:#FFFFFF;border:1px solid rgba(11,95,255,0.2);border-right:none;border-radius:8px 0 0 8px;min-width:0;flex:1;padding:0.85rem 1.2rem;color:var(--white);font-family:'Outfit',system-ui,sans-serif;font-size:0.95rem;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(11,95,255,0.5)'" onblur="this.style.borderColor='rgba(11,95,255,0.2)'">
@@ -2052,7 +2065,7 @@ section,.stats-strip{scroll-margin-top:72px;}
   <div class="footer-inner">
     <div>
       <div class="logo-text" style="font-size:1.1rem;margin-bottom:4px;">Anya<span style="color:var(--cyan)">Shield</span></div>
-      <p class="footer-copy">&#169; 2026 AnyaShield. Cedar Park, Texas. All concepts are original IP protected by provisional patents.</p>
+      <p class="footer-copy">&#169; 2026 AnyaShield. Austin, Texas. All concepts are original IP protected by provisional patents.</p>
     </div>
     <div class="footer-links">
       <a href="https://www.linkedin.com/company/113864226/" target="_blank">LinkedIn</a>
@@ -2201,7 +2214,7 @@ function getAnyaLocalReply(msg){
   if(m.match(/price|cost|how much|\$|paid|plan|subscri/))
     return 'Pricing for all three AnyaShield products is available on request — tailored to your infrastructure and traffic volume. <a href="https://calendly.com/kristalslaney/30min" target="_blank" style="color:#0B5FFF;">Book a free 30-min call with Kristal →</a>';
   if(m.match(/captcha|bot|script|form|login|credential|spam|bypass/))
-    return '<strong>Kinetic CAPTCHA</strong> stops bots cold — a moving target at a randomized position with a server-generated hold duration that never touches the client. No script can crack it, no AI can predict it.';
+    return '<strong>Random Kinetic CAPTCHA</strong> stops bots cold — a moving target at a randomized position with a server-generated hold duration that never touches the client. No script can crack it, no AI can predict it.';
   if(m.match(/ddos|flood|attack|traffic|downtime|shield|cloud|server/))
     return '<strong>Cloud Deflection Shield</strong> absorbs DDoS as a sacrificial cloud layer in front of your infrastructure. When overwhelmed it self-destructs and reinstantiates automatically — your real servers never go down. AI attack memory means it learns every wave.';
   if(m.match(/file|access|document|approval|rfap|authoriz|notification|push/))
@@ -2435,7 +2448,7 @@ function mountDemo(){
     <div class="flow" id="flow">
       <div class="flow-hd"><b>All three, working together</b><span>One visit, protected from the front door to the file</span></div>
       <ol class="flow-steps">
-        <li class="fs" id="fs1"><span class="fs-n">1</span><div class="fs-b"><b>Kinetic CAPTCHA</b><span id="fs1-t">Prove you’re human on the board above.</span></div><em class="fs-st" id="fs1-s">Waiting</em></li>
+        <li class="fs" id="fs1"><span class="fs-n">1</span><div class="fs-b"><b>Random Kinetic CAPTCHA</b><span id="fs1-t">Prove you’re human on the board above.</span></div><em class="fs-st" id="fs1-s">Waiting</em></li>
         <li class="fs live" id="fs2"><span class="fs-n">2</span><div class="fs-b"><b>Cloud Deflection Shield</b><span id="fs2-t">Watching this site’s traffic…</span><div class="fs-meter" aria-hidden="true"><i id="fs2-bar"></i></div><button type="button" class="fs-btn" id="fs2-ddos">Launch a simulated DDoS while you verify</button></div><em class="fs-st" id="fs2-s">Live</em></li>
         <li class="fs" id="fs3"><span class="fs-n">3</span><div class="fs-b"><b>File Authorization</b><span id="fs3-t">Pass step 1 to ask for a protected file.</span>
           <div class="fs-file"><svg class="ff-ico" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><rect x="9" y="13" width="6" height="4" rx="1"/><path d="M10.5 13v-1a1.5 1.5 0 0 1 3 0v1"/></svg><div class="ff-n"><b id="fs3-name">Q3-Investor-Deck.pdf</b><small id="fs3-sub">Encrypted. Owner approval needed every time.</small></div><button type="button" id="fs3-open" disabled>Request access</button></div>
@@ -2456,7 +2469,7 @@ function mountDemo(){
       <div class="g"><b id="lab-blocked">0</b><span>Blocked</span></div>
       <div class="w"><b id="lab-through">0</b><span>Got through</span></div>
     </div>
-    <button type="button" class="lab-all" id="lab-all">▶ Run all 7 attackers</button>
+    <button type="button" class="lab-all" id="lab-all">▶ Run all 8 attackers</button>
     <div class="lab-msg" id="lab-msg" hidden></div>
     <div class="lab-log-hd">Results</div>
     <div class="lab-log" id="lab-log"><div class="lab-empty">Results from attackers and from your own attempts appear here.</div></div>
@@ -2789,7 +2802,7 @@ function mountDemo(){
     <div class="acc-card" id="acc-card">
       <div class="acc-head">
         <div><div class="acc-title">Kinetic access requests <span class="acc-badge" id="acc-tab-badge" hidden>0</span></div>
-        <div class="acc-sub">Every time someone tries the Kinetic check or a passkey on your account, it’s logged here. Confirm it was you, or block it.</div></div>
+        <div class="acc-sub">Every time someone tries the Random Kinetic CAPTCHA or a passkey on your account, it’s logged here. Confirm it was you, or block it.</div></div>
         <div class="acc-stats"><div><b id="acc-total">0</b><span>Attempts</span></div><div><b id="acc-pending" class="am">0</b><span>Need an answer</span></div><div><b id="acc-blocked" class="rd">0</b><span>Blocked</span></div></div>
       </div>
       <div class="acc-list" id="acc-list"></div>
@@ -2959,7 +2972,7 @@ function mountDemo(){
     +'<div style="background:#ffffff;border:1px solid #ffffff;border-radius:16px;padding:24px;position:relative;overflow:hidden;">'
     +'<div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#0B5FFF,#0B5FFF);"></div>'
     +'<div style="font-size:10px;color:#1d7a47;font-family:monospace;margin-bottom:12px;letter-spacing:0.08em;">PRODUCT 01</div>'
-    +'<div style="font-size:1.1rem;font-weight:700;margin-bottom:6px;">Kinetic CAPTCHA</div>'
+    +'<div style="font-size:1.1rem;font-weight:700;margin-bottom:6px;">Random Kinetic CAPTCHA</div>'
     +'<div style="font-size:10px;color:#1d7a47;font-family:monospace;margin-bottom:12px;">KC-1 Platform</div>'
     +'<div style="font-size:12px;color:#546E8A;margin-bottom:16px;">Pricing available on request.</div>'
     +'<div style="display:flex;flex-direction:column;gap:8px;margin-bottom:20px;">'
@@ -3018,7 +3031,7 @@ function mountDemo(){
 
 
   // Suggestions
-  var suggestions=['How does Kinetic CAPTCHA stop bots?','What makes ICDS different from Cloudflare?','How does file authorization work?','What does AnyaShield cost?','Who made AnyaShield?'];
+  var suggestions=['How does Random Kinetic CAPTCHA stop bots?','What makes ICDS different from Cloudflare?','How does file authorization work?','What does AnyaShield cost?','Who made AnyaShield?'];
   var sugEl=document.getElementById('ab-suggestions');
   if(sugEl)suggestions.forEach(function(s){
     var btn=document.createElement('button');
@@ -3613,6 +3626,7 @@ var LAB_BOTS=[
    move:'curve',dt:16,target:'vision',env:0,visit:{pre:1,since:4200}},
   {key:'mimic',name:'Human-mimic bot',ico:'🎭',kind:'AI agent',how:'Fakes human curves, wobble and slowing down — but jumps straight into the puzzle.',
    move:'curve',dt:'var',target:'real',env:0,visit:{pre:0,since:450}},
+  {key:'agent',name:'AI browser agent',ico:'🧠',kind:'AI agent',how:'Works like LLM browser agents: moves the pointer one action at a time with "thinking" pauses in between, then holds on each dot.', move:'hops',dt:16,target:'real',env:0,visit:{pre:12,since:9000}},
   {key:'filler',name:'Form-filler bot',ico:'📝',kind:'Scraper',how:'Clicks every button in the page code, looking for a way to skip the check.',
    move:'none',target:'none',env:0,visit:{pre:0,since:500},honeypot:true}
 ];
@@ -3648,7 +3662,7 @@ function labEntry(html,cls){
   while(log.children.length>30)log.removeChild(log.lastChild);
 }
 function labLogYou(human){
-  if(window.ASAccess)ASAccess.add({passed:human,who:'You',method:'Kinetic check'});
+  if(window.ASAccess)ASAccess.add({passed:human,who:'You',method:'Random Kinetic CAPTCHA'});
   labEntry('<div class="lr-top"><span class="lr-name">YOU</span><span class="lr-tag '+(human?'ok':'bad')+'">'+(human?'Human confirmed':'Blocked')+'</span></div><div class="lr-how">Your own attempt · '+puzzleLabel().toLowerCase()+'</div>',human?'you ok':'you bad');
 }
 function labNote(msg){var n=el('lab-msg');if(!n)return;n.textContent=msg;n.hidden=false;clearTimeout(n._t);n._t=setTimeout(function(){n.hidden=true;},3500);}
@@ -3730,7 +3744,8 @@ function botStep(){
   if(performance.now()-r.t0>15000){labFinish('timeout');return;}
   var T=labTarget();if(!T)return;
   var p=r.pos,dx=T.x-p.x,dy=T.y-p.y,d=Math.hypot(dx,dy),b=r.bot;
-  if(b.move==='teleport'){
+  if(b.move==='hops'){ if(r.wait>0){r.wait--;r.t+=16;return;} if(d<2){r.t+=16;return;} var hx=d<40?T.x:p.x+dx/2+(Math.random()-0.5)*10,hy=d<40?T.y:p.y+dy/2+(Math.random()-0.5)*10; botRecord(hx,hy); r.wait=20+Math.floor(Math.random()*25); return; }
+    if(b.move==='teleport'){
     if(d>2)botRecord(T.x,T.y);
     return;
   }
@@ -3783,7 +3798,7 @@ function labFinish(reason){
   var ORDER=['honeypot','automation','synthetic','trap','teleport','fast','straight','even','noSlow','fewMoves','freeze','noBrowse','instant','timeout'];
   why.sort(function(a,b){return ORDER.indexOf(a)-ORDER.indexOf(b);});
   var main=why.filter(function(w){return LAB_WHY[w];}).map(function(w){return LAB_WHY[w];});
-  if(window.ASAccess)ASAccess.add({passed:!caught,who:b.name+' (simulated attacker)',method:'Kinetic check',sim:true,why:main[0]||''});
+  if(window.ASAccess)ASAccess.add({passed:!caught,who:b.name+' (simulated attacker)',method:'Random Kinetic CAPTCHA',sim:true,why:main[0]||''});
   guideRaw(caught?'✕':'!',b.name+(caught?' blocked: ':' got through: ')+(main[0]||'').toLowerCase(),caught?'bad':'warn');
   var fm=ovFail.querySelector('.cta-m');if(fm)fm.textContent=caught?b.name+' blocked':'Bot got through';
   ovFail.hidden=false;badge(caught?'✕ Bot blocked':'Bot got through');
@@ -5110,7 +5125,7 @@ window.ASAccess=(function(){
     var s=function(id,v){var e=$(id);if(e)e.textContent=v;};
     s('acc-total',n);s('acc-pending',pend);s('acc-blocked',blk);
     var badge=$('acc-tab-badge');if(badge){badge.textContent=pend;badge.hidden=!pend;}
-    if(!n){box.innerHTML='<div class="acc-empty">No attempts yet. Try the Kinetic check (or run an attacker in the Attack Lab) on the Identity Stack tab — every attempt shows up here.</div>';return;}
+    if(!n){box.innerHTML='<div class="acc-empty">No attempts yet. Try the Random Kinetic CAPTCHA (or run an attacker in the Attack Lab) on the Identity Stack tab — every attempt shows up here.</div>';return;}
     box.innerHTML=list.slice(0,25).map(function(a){
       var tag=a.passed?'<span class="acc-tag ok">Passed</span>':'<span class="acc-tag no">Blocked</span>';
       var ans=a.status==='me'?'<span class="acc-tag me">Confirmed: you</span>':a.status==='blocked'?'<span class="acc-tag bl">Blocked by you</span>':'';
@@ -5121,11 +5136,11 @@ window.ASAccess=(function(){
   }
   function add(o){
     init();
-    var a={id:++seq,passed:!!o.passed,who:o.who||'Someone',method:o.method||'Kinetic check',why:o.why||'',sim:!!o.sim,
+    var a={id:++seq,passed:!!o.passed,who:o.who||'Someone',method:o.method||'Random Kinetic CAPTCHA',why:o.why||'',sim:!!o.sim,
       where:o.sim?'simulated attacker':where(),device:o.sim?'bot':device(),time:new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit',second:'2-digit'}),status:'pending'};
     list.unshift(a);if(list.length>200)list.pop();
     render();
-    if(popOn){try{var n=new Notification(a.passed?'Someone passed the Kinetic check':'AnyaShield blocked a Kinetic attempt',{body:a.who+' · '+a.where+' — was this you?',tag:'acc-'+a.id});n.onclick=function(){window.focus();n.close();};}catch(_){}}
+    if(popOn){try{var n=new Notification(a.passed?'Someone passed the Random Kinetic CAPTCHA':'AnyaShield blocked a Kinetic attempt',{body:a.who+' · '+a.where+' — was this you?',tag:'acc-'+a.id});n.onclick=function(){window.focus();n.close();};}catch(_){}}
     return a.id;
   }
   function init(){
@@ -5211,7 +5226,7 @@ window.ASQR=(function(){
 })();
 
 /* ══════════════════════════════════════════════════════════════════
-   ALL THREE TOGETHER: the Kinetic check, the Cloud Deflection Shield and File Authorization as
+   ALL THREE TOGETHER: the Random Kinetic CAPTCHA, the Cloud Deflection Shield and File Authorization as
    one flow. With the AnyaShield server connected every step is real: the server issues the pass,
    counts and deflects requests, and holds the encrypted file until its owner approves.
    Without the server the same flow runs as a simulation and says so.
@@ -5274,13 +5289,13 @@ window.ASFlow=(function(){
   /* ── step 1: every verification attempt (yours or a simulated attacker’s) comes through here ── */
   function attempt(o){
     if(!o||!$('flow'))return;
-    if(o.method!=='Kinetic check'&&o.method!=='Passkey')return;
+    if(o.method!=='Random Kinetic CAPTCHA'&&o.method!=='Passkey')return;
     var name=String(o.who||'').replace(/\s*\(simulated attacker\)/,'');
     if(o.sim){
       if(!o.passed){
-        log('<b>'+esc(name)+'</b> (simulated attacker) failed the Kinetic check'+(o.why?': '+esc(o.why.toLowerCase()):'')+'. '+(st.real?'A real bot caught this way has its address put on the Cloud Deflection blocklist.':'Its address goes onto the Cloud Deflection blocklist, so its next requests never reach the site.'));
+        log('<b>'+esc(name)+'</b> (simulated attacker) failed the Random Kinetic CAPTCHA'+(o.why?': '+esc(o.why.toLowerCase()):'')+'. '+(st.real?'A real bot caught this way has its address put on the Cloud Deflection blocklist.':'Its address goes onto the Cloud Deflection blocklist, so its next requests never reach the site.'));
         if(!st.real&&window.cdsBotWave&&Math.random()<0.5)window.cdsBotWave();
-      }else log('<b>'+esc(name)+'</b> (simulated attacker) got past the Kinetic check. The file would still need the owner’s approval in step 3.');
+      }else log('<b>'+esc(name)+'</b> (simulated attacker) got past the Random Kinetic CAPTCHA. The file would still need the owner’s approval in step 3.');
       return;
     }
     var realPass=st.real&&window.ASV&&window.ASV.pass&&!window.ASV.revoked;
@@ -5288,7 +5303,7 @@ window.ASFlow=(function(){
       st.pass=true;st.passIsReal=!!realPass;
       step(1,'ok','Passed',(realPass?'The AnyaShield server confirmed':'Confirmed')+' you’re human'+(o.method==='Passkey'?' with your passkey':'')+' and issued a <b>one-time pass</b> (valid 2 min).');
       if(!st.fileBusy){step(3,'live','Ready','Your pass lets you <b>ask</b> for the file. The owner still decides.');setFileBtn(true,'Request access');}
-      log('You passed the '+(o.method==='Passkey'?'passkey check':'Kinetic check')+'. One-time pass issued'+(realPass?' by the server':'')+'; step 3 is unlocked.');
+      log('You passed the '+(o.method==='Passkey'?'passkey check':'Random Kinetic CAPTCHA')+'. One-time pass issued'+(realPass?' by the server':'')+'; step 3 is unlocked.');
       if(st.passTimer)clearTimeout(st.passTimer);
       st.passTimer=setTimeout(function(){if(st.pass&&!st.fileBusy){clearPass('Your pass expired unused. Do the check again for a new one.');step(3,'','Locked','Pass step 1 to ask for a protected file.');log('The unused pass expired after 2 minutes, so it can’t be stolen and used later.');}},120000);
       var f=$('fs3');if(f&&!inView(f))setTimeout(function(){f.scrollIntoView({behavior:'smooth',block:'center'});},1300);
@@ -5296,7 +5311,7 @@ window.ASFlow=(function(){
       clearPass(null);
       step(1,'bad','Blocked','That attempt looked automated, so no pass was issued. Try again on the board.');
       if(!st.fileBusy)step(3,'','Locked','No pass, no request. The file can’t even be asked for.');
-      log('An attempt from <b>this device</b> was blocked by the Kinetic check. No pass, so the file request stays locked.');
+      log('An attempt from <b>this device</b> was blocked by the Random Kinetic CAPTCHA. No pass, so the file request stays locked.');
       if(st.real)setTimeout(function(){stats(true);},800);
     }
   }
@@ -5700,9 +5715,9 @@ var abConversation=[],abLoading=false;
 
 var AB_RESPONSES=[
   {keys:['who built','who made','who created','who is kristal','founder','kristal'],
-   reply:"AnyaShield was built by Kristal Joy Slaney — founder, inventor, and solo architect of all three products. She's based in Cedar Park, Texas. Every line of technology you're seeing is her original work."},
+   reply:"AnyaShield was built by Kristal Joy Slaney — founder, inventor, and solo architect of all three products. She's based in Austin, Texas. Every line of technology you're seeing is her original work."},
   {keys:['kinetic','captcha','kc-1','kc1'],
-   reply:"Kinetic CAPTCHA (KC-1) replaces static image puzzles with randomized position-and-hold challenges. Because the target moves unpredictably, bots can't pre-compute the answer."},
+   reply:"Random Kinetic CAPTCHA (KC-1) replaces static image puzzles with randomized position-and-hold challenges. Because the target moves unpredictably, bots can't pre-compute the answer."},
   {keys:['cloud','deflection','shield','cds','ddos','attack','traffic'],
    reply:"The Cloud Deflection Shield routes attack traffic into a sacrificial cloud layer that autonomously resets after each wave. Real users never see downtime. Anya AI learns from each attack pattern so repeat threats are blocked before thresholds are even reached."},
   {keys:['file','rfap','authorization','access','document','leak','dlp'],
@@ -5724,7 +5739,7 @@ var AB_RESPONSES=[
   {keys:['ai','bot','agent','llm','gpt','chatgpt','artificial intelligence'],
    reply:"Great question — AnyaShield is specifically designed to stop AI agents and LLM-powered attacks, not just human bots. RFAP-3 even detects when an AI is making file requests vs. a human user."},
   {keys:['anyashield','what is','about','tell me','explain'],
-   reply:"AnyaShield is a real-time cybersecurity company with three breakthrough products: Kinetic CAPTCHA, Cloud Deflection Shield, and Real-Time File Authorization — all patent-pending, all built by one founder: Kristal Joy Slaney."},
+   reply:"AnyaShield is a real-time cybersecurity company with three breakthrough products: Random Kinetic CAPTCHA, Cloud Deflection Shield, and Real-Time File Authorization — all patent-pending, all built by one founder: Kristal Joy Slaney."},
 ];
 
 function abGetReply(txt){
@@ -6138,7 +6153,7 @@ function renderDashboard(){
     +'<div class=&quot;stat-card&quot;>'
     +'<div class=&quot;stat-label&quot;>Bots Blocked</div>'
     +'<div class=&quot;stat-value stat-safe&quot;>'+captchaStats.blocked.toLocaleString()+'</div>'
-    +'<div class=&quot;stat-sub&quot;>Via Kinetic CAPTCHA</div>'
+    +'<div class=&quot;stat-sub&quot;>Via Random Kinetic CAPTCHA</div>'
     +'</div>'
     +'<div class=&quot;stat-card&quot;>'
     +'<div class=&quot;stat-label&quot;>Files Protected</div>'
@@ -6258,7 +6273,7 @@ function renderCaptcha(){
     '<div style=&quot;padding:16px;&quot;>'
     +'<div style=&quot;background:var(--surface);border:1px solid rgba(11,95,255,0.2);border-radius:14px;padding:16px;margin-bottom:12px;&quot;>'
     +'<div style=&quot;display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;&quot;>'
-    +'<div style=&quot;font-weight:700;font-size:14px;&quot;>Kinetic CAPTCHA</div>'
+    +'<div style=&quot;font-weight:700;font-size:14px;&quot;>Random Kinetic CAPTCHA</div>'
     +'<div style=&quot;font-size:10px;color:var(--green);background:var(--green2);padding:3px 8px;border-radius:20px;font-family:\'JetBrains Mono\',monospace;font-weight:700;&quot;>ACTIVE</div>'
     +'</div>'
     +'<div style=&quot;margin-bottom:12px;&quot;>'
@@ -6394,4 +6409,6 @@ function closeApp(){
   document.body.style.overflow='';
 }
 </script>
+<div id="as-progress" aria-hidden="true"></div>
+<script>(function(){var b=document.getElementById('as-progress'),q=0;function u(){q=0;var h=document.documentElement,m=h.scrollHeight-h.clientHeight;b.style.transform='scaleX('+(m>0?Math.min(1,h.scrollTop/m):0)+')';}addEventListener('scroll',function(){if(!q){q=1;requestAnimationFrame(u);}},{passive:true});u();})();</script>
 </body></html>
