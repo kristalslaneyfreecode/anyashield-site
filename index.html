@@ -1495,6 +1495,10 @@ h1 em{background:linear-gradient(90deg,#0B5FFF 0%,#0B5FFF 35%,#5FA2FF 50%,#0B5FF
 .bench-row{min-width:0;max-width:100%;overflow-wrap:anywhere;}
 @media(max-width:768px){footer a{display:inline-block;padding:11px 8px;min-height:44px;line-height:22px;}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important;}}
+.as-fp-note{font-size:.78rem;color:#546E8A;margin:6px 2px 10px;}
+.as-start-hint{position:absolute;left:50%;top:calc(100% + 8px);transform:translateX(-50%);white-space:nowrap;font:600 12px 'Outfit',system-ui,sans-serif;color:#0B5FFF;background:#fff;border:1px solid rgba(11,95,255,.35);border-radius:100px;padding:3px 10px;pointer-events:none;z-index:5;animation:asHint 1.6s ease-in-out infinite;}
+.shield:not(.shield-waiting) .as-start-hint{display:none;}
+@keyframes asHint{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,4px)}}
 </style>
 </head>
 <body>
@@ -2401,7 +2405,8 @@ function mountDemo(){
         <span class="mode-chip" id="as-mode" title="Running without the AnyaShield server. Checks run in this browser only.">Browser-only</span>
         <span class="card-badge" id="badge1">2 dots, in order</span>
       </div>
-      <div class="k-guide" id="k-guide" role="status" aria-live="polite"><span class="kg-n" id="kg-n">1</span><span id="kg-t">Rest your mouse on the fingerprint, or touch and hold it</span></div>
+      <div class="k-guide" id="k-guide" role="status" aria-live="polite"><span class="kg-n" id="kg-n">1</span><span id="kg-t">Put your mouse on the fingerprint (or touch and hold it). It will follow you.</span></div>
+<div class="as-fp-note">The fingerprint is only a picture you move. Nothing is scanned. You have 60 seconds per try.</div>
       <div class="arena" id="arena" tabindex="0" style="outline:none;">
         <svg class="arena-svg" id="svg1">
           <defs><filter id="glow1"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
@@ -2432,7 +2437,7 @@ function mountDemo(){
         <p class="k-ai-note" id="k-ai-note" aria-hidden="true"></p>
         <div id="ov-clicklock" hidden class="click-lock-chip">PICKED UP · MOVE &amp; CLICK TO DROP</div>
         <button class="kbd-btn" id="kbd-mode-btn" onclick="toggleKbdMode()" title="Arrow-key mode">⌨ KEYS</button>
-        <div class="arena-ov" id="ov-fail" hidden><div class="k-strip" style="background:rgba(191,30,58,.1);border:1px solid rgba(191,30,58,.4);color:var(--red);"><span class="cta-m" style="color:inherit;font-size:inherit;text-shadow:none;">LET GO TOO EARLY</span></div></div>
+        <div class="arena-ov" id="ov-fail" hidden><div class="k-strip" style="background:rgba(191,30,58,.1);border:1px solid rgba(191,30,58,.4);color:var(--red);"><span class="cta-m" style="color:inherit;font-size:inherit;text-shadow:none;">TOO SOON — TRY AGAIN</span></div></div>
         <div class="arena-ov" id="ov-ok" hidden><div class="k-strip" style="background:rgba(29,122,71,.12);border:1px solid rgba(29,122,71,.45);color:var(--green);"><span class="ok-ico">✅</span><span>HUMAN CONFIRMED</span></div></div>
       </div>
       <div class="k-presence" id="k-presence" hidden><div class="kp-top"><span class="kp-dot"></span><span class="kp-lbl">Presence layer</span><span class="kp-state" id="kp-state">active</span><span class="kp-trust">Trust <b id="kp-score">94</b></span></div><div class="kp-bar"><div id="kp-bar"></div></div><div class="kp-last" id="kp-last">Real person present</div></div>
@@ -3106,7 +3111,7 @@ var ovIdle=el('ov-idle'),ovFail=el('ov-fail'),ovOk=el('ov-ok'),ovClickLock=el('o
 var dragging=false,clickLock=false,hoverMode=false,kbdMode=false,_kistouch=false,pts=[];
 var grabOffX=0,grabOffY=0,_resetTimer=null,lastPos=null,_loopRaf=null,_loopT=0;
 var DOTS=[],DECOYS=[],cur=0,dwellIdx=-1,dwellStart=0,PUZ={n:2,moving:false};
-var botRun=null,HIT_R=46,_trap=false,_fast=false,_trapT=0,_trapP=null,_doneAt=0,_finished=false,_pres=null;
+var _asT0=0,botRun=null,HIT_R=46,_trap=false,_fast=false,_trapT=0,_trapP=null,_doneAt=0,_finished=false,_pres=null;
 
 var KV=(function(){var _0xeddc=["/vns7/o=","9vjOxNLB","0tXV3g==","9/TAw8A=","ycfb28/Xrqo=","2w==","0aWlsg==","tq6tpaQ=","v6Gh","sLqsr7GM","tw==","k4A=","jJM=","mpI=","lpM=","iA==","dnI=","Y35EYWNqaHpG","ZX16f05UQktZ","dm5zQ0FV","cU1S","VlxfRw==","XlhaUE0=","Q1JYWTIqMCw+","c1sgICsvPiMQPiszMgcZOAMPHwAYFzfT/9Xl5eL359LI","Kw==","PSk8Jg==","JSAzKx04Bwsc","","AREMBgQZHx4=","BgkHAiEcFhQJ7+4=","MzAcHB8TCuzl9e8=","FxkUPQr26uXq+vj7+Q==","HhLtwvP94+Lz4fH08OLLyd7f39/a3M4=","3vfi5uj++uP0","19jr/fH58+jN/O/t6fDg0NvUzKWhtQ==","7PP59P768sHLz8PZxts=","ycbr+sDB2sLY1Mboyd6yqra9k6m8","wv/Uw8vI3dvD3cnhsqe1o72kjLCssrw=","+/jO39nF08vj2rSkpL6vpbE=","9PHG0dXez6m1o7uTqqS0tK6/lYE=","7erL3tKkqq6/oI+2oLiwqoORjQ==","5uPZuqG6ori0poi/q4GPk4iYig==","n5yiu6W5t6eHrrCWloaanZWX","mJW6tbGyq7Wph5e3noCGhpaKjWVn","kY6nsra4joqThLOanIKKmo5xYWM=","ioe9poWWjpyIgqyDl4uNY3V4bmo=","g4COhJufuZCAnoi8bGZ0fQ==","vLmFjZyGopmPl3NHaGRreWF7","tbKckoWNq552bHpbfH55Z24=","rquHlpx5dHRga2dmSkd5d09ATkRKb2w=","p6SOdk1pY3lDcGRwbGtR","oF11fXt+dGByf29/RlBIQFpTQVFUUB43JDgkICcJBg==","WGpobE1OeTZkYAl9GgAJbk0IDBM/ORYXajIwNAUhPj9CHggMLQ==","anVnWW5yT1BKWE5cRU15W1AlMA==","SDN5eUN8WnUIWFZWZ0dgIiAkFQ==","f3FCUUpPQ0R2WlxRWiwx","UUBETkBYQVo=","TV5GRFBK","VlxEfF1cKg==","UF9JATcyOyUtJyE9","UiAqID8sNzYl","LTE7ISU=","OCo+MCg0LBU=","MjQq","NzwY","ABQXBhQ=","GwcHEhE=","CR4aFwk=","BQ0OHuvi4P8=","GPbm6A==","6ujZ4f/k","4+H/8e7q8tQ=","5/vs6evS0MLO","6uXx1s3N38fS","xc3Q","xt/Z397XzdXQrA==","2sPVxw==","09nIyg==","ytaxrLw=","s7Ss","pKKSobmur7o=","or25ubg=","sbWtlYWJng==","so2BjQ==","jYuI","vg==","kpKNsG91Y3o=","lp95Q2Z6","ZHdtbnR0","emNpZg==","c3x4en1r","YHJk","dlRJRkQ=","SElb","XkBHW1w="],_0x836c7={};function _0x3cfd5(n){if(n in _0x836c7)return _0x836c7[n];var s=atob(_0xeddc[n]),o='';for(var j=0;j<s.length;j++)o+=String.fromCharCode(s.charCodeAt(j)^((147+n*7+j*3)&255));return _0x836c7[n]=o;}return (function () {var _0x8f2af = [], _0xaa1c0 = _0x3cfd5(0), _0x813b3 = 0, _0x6260f = { pre: 99, since: 99999 }, _0x348fb = 0;function _0xe6c5a(_0xf1d8b) { var _0xd7bd7 = 0; for (var _0x9a26b = 0; _0x9a26b < _0xf1d8b[_0x3cfd5(1)]; _0x9a26b++)_0xd7bd7 += _0xf1d8b[_0x9a26b]; return _0xf1d8b[_0x3cfd5(1)] ? _0xd7bd7 / _0xf1d8b[_0x3cfd5(1)] : 0; }function _0x1aae1(_0xf1d8b, _0x3205) { var _0xd7bd7 = 0; for (var _0x9a26b = 0; _0x9a26b < _0xf1d8b[_0x3cfd5(1)]; _0x9a26b++)_0xd7bd7 += (_0xf1d8b[_0x9a26b] - _0x3205) * (_0xf1d8b[_0x9a26b] - _0x3205); return _0xf1d8b[_0x3cfd5(1)] ? Math[_0x3cfd5(2)](_0xd7bd7 / _0xf1d8b[_0x3cfd5(1)]) : 0; }function _0x738c9() { try {return typeof window[_0x3cfd5(3)] === _0x3cfd5(4) ? window[_0x3cfd5(3)]() : null;}catch (_0x5ff50) {return null;} }function _0x54e91(_0x3205, _0x4057c) {_0x8f2af = [];_0xaa1c0 = _0x3205 || _0x3cfd5(0);_0x813b3 = 0;_0x348fb = 0;var _0x89d28 = _0x738c9();if (_0x89d28) {var _0xd04e7 = 0;if (_0x4057c) {for (var _0x9a26b = 0; _0x9a26b < _0x89d28[_0x3cfd5(5)][_0x3cfd5(1)]; _0x9a26b++) {var _0x1247f = _0x89d28[_0x3cfd5(5)][_0x9a26b];if (_0x1247f[0] < _0x4057c[_0x3cfd5(6)] || _0x1247f[0] > _0x4057c[_0x3cfd5(7)] || _0x1247f[1] < _0x4057c[_0x3cfd5(8)] || _0x1247f[1] > _0x4057c[_0x3cfd5(9)])_0xd04e7++;}}_0x6260f = { pre: _0xd04e7 + _0x89d28[_0x3cfd5(10)][_0x3cfd5(11)] + _0x89d28[_0x3cfd5(10)][_0x3cfd5(12)] + _0x89d28[_0x3cfd5(10)][_0x3cfd5(13)] + _0x89d28[_0x3cfd5(10)][_0x3cfd5(14)], since: _0x89d28[_0x3cfd5(15)] };_0x813b3 += _0x89d28[_0x3cfd5(10)][_0x3cfd5(16)];}}function _0x7cb47(_0x9052, _0x8336a, _0x235b0) {if (_0x235b0 && _0x235b0[_0x3cfd5(17)] === false)_0x813b3++;var _0x89d28 = (_0x235b0 && typeof _0x235b0[_0x3cfd5(18)] === _0x3cfd5(19) && _0x235b0[_0x3cfd5(18)] > 0) ? _0x235b0[_0x3cfd5(18)] : performance[_0x3cfd5(20)]();if (_0x8f2af[_0x3cfd5(1)]) {var _0x6d737 = _0x89d28 - _0x8f2af[_0x8f2af[_0x3cfd5(1)] - 1][2];if (_0x6d737 > _0x348fb)_0x348fb = _0x6d737;}_0x8f2af[_0x3cfd5(21)]([_0x9052, _0x8336a, _0x89d28]);if (_0x8f2af[_0x3cfd5(1)] > 3000)_0x8f2af[_0x3cfd5(22)]();}function _0x413f9() {var _0xbe174 = [], _0x421a1 = navigator, _0x639 = window, _0x49133 = document;try {if (_0x421a1[_0x3cfd5(23)])_0xbe174[_0x3cfd5(21)](1);}catch (_0x5ff50) { }try {if (new RegExp(_0x3cfd5(24), _0x3cfd5(25))[_0x3cfd5(26)](_0x421a1[_0x3cfd5(27)] || _0x3cfd5(28)))_0xbe174[_0x3cfd5(21)](2);}catch (_0x5ff50) { }var _0xa761b = [_0x3cfd5(29), _0x3cfd5(30), _0x3cfd5(31), _0x3cfd5(32), _0x3cfd5(33), _0x3cfd5(34), _0x3cfd5(35), _0x3cfd5(36), _0x3cfd5(37), _0x3cfd5(38), _0x3cfd5(39), _0x3cfd5(40), _0x3cfd5(41), _0x3cfd5(42), _0x3cfd5(43), _0x3cfd5(44), _0x3cfd5(45), _0x3cfd5(46), _0x3cfd5(47), _0x3cfd5(48), _0x3cfd5(49), _0x3cfd5(50), _0x3cfd5(51), _0x3cfd5(52)];for (var _0x9a26b = 0; _0x9a26b < _0xa761b[_0x3cfd5(1)]; _0x9a26b++) {try {if (_0xa761b[_0x9a26b] in _0x639 || _0xa761b[_0x9a26b] in _0x49133)_0xbe174[_0x3cfd5(21)](3);}catch (_0x5ff50) { }}try {for (var _0xcb148 in _0x639) {if (new RegExp(_0x3cfd5(53))[_0x3cfd5(26)](_0xcb148)) {_0xbe174[_0x3cfd5(21)](4);break;}}}catch (_0x5ff50) { }try {var _0x103a4 = Object[_0x3cfd5(54)](_0x49133);for (var _0x3ff90 = 0; _0x3ff90 < _0x103a4[_0x3cfd5(1)]; _0x3ff90++) {if (new RegExp(_0x3cfd5(55))[_0x3cfd5(26)](_0x103a4[_0x3ff90])) {_0xbe174[_0x3cfd5(21)](5);break;}}}catch (_0x5ff50) { }try {var _0x17fd1 = _0x49133[_0x3cfd5(56)];[_0x3cfd5(57), _0x3cfd5(23), _0x3cfd5(58)][_0x3cfd5(59)](function (_0xf1d8b) { if (_0x17fd1[_0x3cfd5(60)](_0xf1d8b) !== null)_0xbe174[_0x3cfd5(21)](6); });}catch (_0x5ff50) { }try {if (_0x421a1[_0x3cfd5(61)] && _0x421a1[_0x3cfd5(61)][_0x3cfd5(1)] === 0)_0xbe174[_0x3cfd5(21)](7);}catch (_0x5ff50) { }return _0xbe174;}function _0x96e3a(_0xbcd84) {var _0xd04e7 = [], _0xc84fa = [_0xbcd84[0]];for (var _0x9a26b = 1; _0x9a26b < _0xbcd84[_0x3cfd5(1)]; _0x9a26b++) {if (_0xbcd84[_0x9a26b][2] - _0xbcd84[_0x9a26b - 1][2] > 150) {if (_0xc84fa[_0x3cfd5(1)] > 1)_0xd04e7[_0x3cfd5(21)](_0xc84fa);_0xc84fa = [];}_0xc84fa[_0x3cfd5(21)](_0xbcd84[_0x9a26b]);}if (_0xc84fa[_0x3cfd5(1)] > 1)_0xd04e7[_0x3cfd5(21)](_0xc84fa);return _0xd04e7;}function _0x4f407(_0xbcd84, _0xb94d1, _0x68b99) {var _0xe5eec = 0;_0x68b99 = _0x68b99 || [];for (var _0x9a26b = 1; _0x9a26b < _0xbcd84[_0x3cfd5(1)]; _0x9a26b++) {var _0x57ef5 = _0xbcd84[_0x9a26b][2] - _0xbcd84[_0x9a26b - 1][2], _0xfa794 = Math[_0x3cfd5(62)](_0xbcd84[_0x9a26b][0] - _0xbcd84[_0x9a26b - 1][0], _0xbcd84[_0x9a26b][1] - _0xbcd84[_0x9a26b - 1][1]);if (_0xfa794 > 260 && _0x57ef5 < 20) {_0xe5eec += 2;_0x68b99[_0x3cfd5(21)](_0x3cfd5(63));break;}}var _0x1f989 = _0xbcd84[_0x3cfd5(1)] > 1 ? _0x96e3a(_0xbcd84) : [], _0x1e4b2 = 0, _0x20db9 = 0, _0xe1969 = 0, _0x421a1 = 0;_0x1f989[_0x3cfd5(59)](function (_0xcb148) {var _0xf1d8b = _0xcb148[0], _0x68716 = _0xcb148[_0xcb148[_0x3cfd5(1)] - 1], _0xd431d = Math[_0x3cfd5(62)](_0x68716[0] - _0xf1d8b[0], _0x68716[1] - _0xf1d8b[1]);if (_0xd431d < 60 || _0xcb148[_0x3cfd5(1)] < 6)return;_0x421a1++;var _0xb9738 = 0;for (var _0x9a26b = 1; _0x9a26b < _0xcb148[_0x3cfd5(1)] - 1; _0x9a26b++) {var _0x49133 = Math[_0x3cfd5(64)]((_0x68716[0] - _0xf1d8b[0]) * (_0xf1d8b[1] - _0xcb148[_0x9a26b][1]) - (_0xf1d8b[0] - _0xcb148[_0x9a26b][0]) * (_0x68716[1] - _0xf1d8b[1])) / _0xd431d;if (_0x49133 > _0xb9738)_0xb9738 = _0x49133;}if (_0xb9738 < 1.6 + _0xd431d * 0.008)_0x1e4b2++;var _0xa0e0a = [];for (var _0x3ff90 = 1; _0x3ff90 < _0xcb148[_0x3cfd5(1)]; _0x3ff90++)_0xa0e0a[_0x3cfd5(21)](Math[_0x3cfd5(62)](_0xcb148[_0x3ff90][0] - _0xcb148[_0x3ff90 - 1][0], _0xcb148[_0x3ff90][1] - _0xcb148[_0x3ff90 - 1][1]));var _0x3205 = _0xe6c5a(_0xa0e0a);if (_0x3205 > 0 && _0x1aae1(_0xa0e0a, _0x3205) / _0x3205 < 0.22)_0x20db9++;var _0x412cf = Math[_0x3cfd5(65)][_0x3cfd5(66)](null, _0xa0e0a), _0x85308 = _0xa0e0a[_0x3cfd5(67)](Math[_0x3cfd5(68)](_0xa0e0a[_0x3cfd5(1)] * 0.75));if (_0x412cf > 3 && _0xe6c5a(_0x85308) / _0x412cf > 0.8)_0xe1969++;});if (_0x421a1 >= _0xb94d1) {if (_0x1e4b2 === _0x421a1) {_0xe5eec += 2;_0x68b99[_0x3cfd5(21)](_0x3cfd5(69));}if (_0x20db9 === _0x421a1) {_0xe5eec += 2;_0x68b99[_0x3cfd5(21)](_0x3cfd5(70));}if (_0xe1969 === _0x421a1) {_0xe5eec += 1;_0x68b99[_0x3cfd5(21)](_0x3cfd5(71));}}return _0xe5eec;}function _0x4f29b(_0x897db) {var _0x68b99 = [], _0xe5eec = 0, _0x18013 = false;if (_0x897db[_0x3cfd5(72)]) {_0x68b99[_0x3cfd5(21)](_0x3cfd5(72));_0x18013 = true;}if (_0x897db[_0x3cfd5(73)] > 0) {_0x68b99[_0x3cfd5(21)](_0x3cfd5(74));_0x18013 = true;}if (_0x897db[_0x3cfd5(75)] > 0) {_0x68b99[_0x3cfd5(21)](_0x3cfd5(76));_0x18013 = true;}if (_0x897db[_0x3cfd5(77)]) {_0x68b99[_0x3cfd5(21)](_0x3cfd5(77));_0xe5eec += 3;}if (_0x897db[_0x3cfd5(78)]) {_0x68b99[_0x3cfd5(21)](_0x3cfd5(78));_0xe5eec += 2;}var _0x3de6d = _0x897db[_0x3cfd5(79)] || { pre: 99, since: 99999 };if (_0x3de6d[_0x3cfd5(80)] < 3) {_0x68b99[_0x3cfd5(21)](_0x3cfd5(81));_0xe5eec += 2;}if (_0x3de6d[_0x3cfd5(82)] < 1500) {_0x68b99[_0x3cfd5(21)](_0x3cfd5(83));_0xe5eec += 1;}if (_0x897db[_0x3cfd5(84)] !== _0x3cfd5(85)) {var _0xbcd84 = _0x897db[_0x3cfd5(86)] || [];if (_0xbcd84[_0x3cfd5(1)] < 12) {_0x68b99[_0x3cfd5(21)](_0x3cfd5(87));_0xe5eec += 3;}else {if ((_0x897db[_0x3cfd5(88)] || 0) > 6000) {_0x68b99[_0x3cfd5(21)](_0x3cfd5(89));_0xe5eec += 1;}var _0x40b55 = _0x6c9ad(_0xbcd84);_0xe5eec += _0x40b55[_0x3cfd5(90)];_0x68b99 = _0x68b99[_0x3cfd5(91)](_0x40b55[_0x3cfd5(92)]);}}return { human: !_0x18013 && _0xe5eec < 3, score: _0xe5eec, why: _0x68b99 };}function _0x6c9ad(_0xbcd84) {var _0x68b99 = [], _0xe5eec = _0x4f407(_0xbcd84, 1, _0x68b99);return { soft: _0xe5eec, why: _0x68b99 };}function _0xeab56(_0x50cfd) {_0x50cfd = _0x50cfd || {};return { S: _0x8f2af, mode: _0xaa1c0, visit: _0x6260f, untrusted: _0x813b3, env: _0x413f9()[_0x3cfd5(1)], trap: !!_0x50cfd[_0x3cfd5(77)], fast: !!_0x50cfd[_0x3cfd5(78)], maxGap: _0x348fb, honeypot: !!_0x50cfd[_0x3cfd5(72)] };}function _0x33ca5(_0x50cfd) { return _0x4f29b(_0xeab56(_0x50cfd))[_0x3cfd5(93)]; }function _0x2011(_0x50cfd) {var _0xd7bd7 = _0xeab56(_0x50cfd);return { mode: _0xd7bd7[_0x3cfd5(84)], visit: _0xd7bd7[_0x3cfd5(79)], untrusted: _0xd7bd7[_0x3cfd5(73)], env: _0xd7bd7[_0x3cfd5(75)], trap: _0xd7bd7[_0x3cfd5(77)], fast: _0xd7bd7[_0x3cfd5(78)], honeypot: _0xd7bd7[_0x3cfd5(72)],S: _0x8f2af[_0x3cfd5(94)](function (_0x1247f) { return [Math[_0x3cfd5(95)](_0x1247f[0] * 10) / 10, Math[_0x3cfd5(95)](_0x1247f[1] * 10) / 10, Math[_0x3cfd5(95)](_0x1247f[2] * 10) / 10]; }) };}return { b: _0x54e91, r: _0x7cb47, v: _0x33ca5, x: _0x4f29b, p: _0x2011, q: function (_0x50cfd) { return _0x4f29b(_0xeab56(_0x50cfd)); }, s: function (_0xbcd84) { return _0xbcd84 && _0xbcd84[_0x3cfd5(1)] > 5 ? _0x4f407(_0xbcd84, 1) : 0; }, e: function () { return _0x413f9()[_0x3cfd5(1)]; } };})()})();
 
@@ -3119,13 +3124,13 @@ function puzzleLabel(){return PUZ.n+' dots'+(PUZ.moving?', moving':'')+', in ord
 /* ── Instruction strip ── */
 function guideRaw(n,t,cls){var g=el('k-guide');if(!g)return;el('kg-n').textContent=n;el('kg-t').textContent=t;g.className='k-guide'+(cls?' '+cls:'');}
 function setGuide(step){
-  if(step==='start'||step===0)return guideRaw('▶','Rest your mouse on the fingerprint, or touch and hold it');
+  if(step==='start'||step===0)return guideRaw('▶','Put your mouse on the fingerprint (or touch and hold it). It will follow you.');
   if(step==='dot'){
     var k=cur+1,mv=PUZ.moving?' (it moves slowly)':'';
-    return guideRaw(String(k),k===1?'Find dot 1 and stay on it until the ring fills'+mv:'Follow the arrow to dot '+k+' and stay until it fills'+mv);
+    return guideRaw(String(k),k===1?'Bring it to dot 1 and keep it there until the circle turns green'+mv:'Now dot '+k+'. Follow the arrow and keep it there until the circle turns green'+mv);
   }
   if(step==='ok')return guideRaw('✓','Human confirmed. Presence monitoring is on.','ok');
-  if(step==='bad')return guideRaw('!','Let go too early. Try the fingerprint again.','bad');
+  if(step==='bad')return guideRaw('!',(typeof _kistouch!=='undefined'&&_kistouch)?'Lifted your finger too soon. Keep it down until the circle turns green.':'Moved off too soon. Keep it on the dot until the circle turns green.','bad');
   if(step==='bot')return guideRaw('✕','Automated movement detected','bad');
 }
 
@@ -3335,6 +3340,8 @@ function loop(ts){
   }
   if(botRun&&dragging)botStep();
   if(dragging&&lastPos){evalPos(lastPos.x,lastPos.y);trapCheck();}
+    /* 60-second limit per try: then the whole puzzle resets with new dots and hold times */
+    if(dragging&&!botRun&&_asT0&&performance.now()-_asT0>60000){ _asT0=0; try{registerFail(1);}catch(_e){} resetKinetic(); setTimeout(function(){guideRaw('↺','Took too long, so here is a new puzzle. Start again on the fingerprint.','bad');},60); return; }
   if(botRun&&_trap&&!botRun.done){labFinish();return;}
   if(dragging&&dwellIdx===cur&&dwellProgress()>=1)completeDot();
   render();
@@ -3377,7 +3384,7 @@ function readyForNext(){
   setTimeout(function(){shield.style.transition='';},500);
   shield.classList.remove('held');shield.classList.add('shield-waiting');
   ovIdle.hidden=false;badge(puzzleLabel());
-  guideRaw('✓','Human confirmed. Rest on the fingerprint (or tap it) to go again.','ok');
+  guideRaw('✓','Human confirmed. Put your mouse on the fingerprint (or tap it) to go again.','ok');
 }
 function blockBot(msg){
   msg=msg||'Automated movement detected';
@@ -3385,7 +3392,7 @@ function blockBot(msg){
   var fm=ovFail.querySelector('.cta-m');if(fm)fm.textContent=msg;
   guideRaw('✕',msg,'bad');ovFail.hidden=false;ovOk.hidden=true;badge('✕ Bot blocked');
   if(_resetTimer)clearTimeout(_resetTimer);
-  _resetTimer=setTimeout(function(){_resetTimer=null;if(fm)fm.textContent='LET GO TOO EARLY';resetKinetic();activateStep(0);},2600);
+  _resetTimer=setTimeout(function(){_resetTimer=null;if(fm)fm.textContent='TOO SOON — TRY AGAIN';resetKinetic();activateStep(0);},2600);
 }
 
 /* ── Presence layer: keeps watching after the puzzle, with a live trust score ── */
@@ -3432,7 +3439,8 @@ function presenceRecheck(){
 }
 
 /* ── Starting a run ── */
-function kStart(m){
+function kStart(m){ var _ok=kStart0(m); if(_ok!==false&&!botRun)_asT0=performance.now(); return _ok; }
+function kStart0(m){
   if(botRun)return false;
   if(lockLeft()){showLock();return false;}
   if(ASV.on&&!ASV.ready){ASV.prep();guideRaw('⟳','Connecting to the AnyaShield server…','');return false;}
@@ -3816,7 +3824,7 @@ function labFinish(reason){
     '<ul class="lr-why">'+(main.length?main.map(function(m){return '<li>'+m+'</li>';}).join(''):'<li>No check fired</li>')+'</ul>',caught?'bot':'bot through');
   setTimeout(function(){
     if(botRun!==r)return;
-    var fmm=ovFail.querySelector('.cta-m');if(fmm)fmm.textContent='LET GO TOO EARLY';
+    var fmm=ovFail.querySelector('.cta-m');if(fmm)fmm.textContent='TOO SOON — TRY AGAIN';
     botRun=null;labTag(false);
     var next=labQueue.shift();
     resetKinetic();
@@ -6420,5 +6428,6 @@ function closeApp(){
 }
 </script>
 <div id="as-progress" aria-hidden="true"></div>
+<script>(function(){function add(){var sh=document.getElementById('shield');if(sh&&!sh.querySelector('.as-start-hint')){var h=document.createElement('div');h.className='as-start-hint';h.textContent='Start here';sh.appendChild(h);}}add();setInterval(add,1000);})();</script>
 <script>(function(){var b=document.getElementById('as-progress'),q=0;function u(){q=0;var h=document.documentElement,m=h.scrollHeight-h.clientHeight;b.style.transform='scaleX('+(m>0?Math.min(1,h.scrollTop/m):0)+')';}addEventListener('scroll',function(){if(!q){q=1;requestAnimationFrame(u);}},{passive:true});u();})();</script>
 </body></html>
