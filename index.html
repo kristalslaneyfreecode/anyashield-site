@@ -3210,7 +3210,8 @@ function drawArrow(fromPctX,fromPctY,toPctX,toPctY){
   var dx=x2-x1,dy=y2-y1,len=Math.hypot(dx,dy);
   if(len<10)return;
   var ux=dx/len,uy=dy/len,off=24;
-  var lx1=x1+ux*off,ly1=y1+uy*off,lx2=x2-ux*off,ly2=y2-uy*off;
+  /* short pointer only — it shows the direction without joining the dots */
+  var reach=Math.min(len-off,off+44),lx1=x1+ux*off,ly1=y1+uy*off,lx2=x1+ux*reach,ly2=y1+uy*reach;
   ctx.save();
   ctx.strokeStyle='rgba(11,95,255,.6)';ctx.lineWidth=2;ctx.setLineDash([6,5]);
   ctx.beginPath();ctx.moveTo(lx1,ly1);ctx.lineTo(lx2,ly2);ctx.stroke();
@@ -3282,7 +3283,8 @@ function render(){
   var R=prng(Math.floor(performance.now()/220)*7919+DOTS.length);
   /* decoys — barely visible to people */
   DECOYS.forEach(function(d){drawRing(ctx,d.x/100*W,d.y/100*H,String(d.n),0.032,false,R);});
-  for(var i=0;i<=Math.min(cur,DOTS.length-1);i++){
+  /* one dot at a time: only the current dot is drawn, finished dots disappear */
+    for(var i=Math.min(cur,DOTS.length-1);i<=Math.min(cur,DOTS.length-1);i++){
     var d=DOTS[i],cx=d.x/100*W,cy=d.y/100*H;
     drawRing(ctx,cx,cy,String(i+1),1,d.hit,R);
     glazeNoise(ctx,cx,cy,R);
